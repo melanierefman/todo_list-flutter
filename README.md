@@ -1,4 +1,4 @@
-# Simple Application - College Schedule  
+# Simple Application - Aplikasi Jadwal Kegiatan Kuliah
 
 ## Identity  
 - **Name:** Melanie Sayyidina Sabrina Refman  
@@ -20,7 +20,7 @@ This is a simple **Flutter** application designed to help students manage their 
 
 ## Application Demo  
 Watch the demo video here:  
-[![Demo Video](https://img.youtube.com/vi/Jut-HOkn2UI/0.jpg)](https://youtu.be/Jut-HOkn2UI)  
+[![Demo Video](https://img.youtube.com/vi/l2O5WIg-vs4/0.jpg)](https://youtu.be/l2O5WIg-vs4)
 
 ## Getting Started
 
