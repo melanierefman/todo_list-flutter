@@ -4,7 +4,7 @@
 - **Name:** Melanie Sayyidina Sabrina Refman  
 - **NRP:** 5025211029  
 - **Class:** PPB C  
-- **Course:** Mobile Programming (PPB)  
+- **Course:** PPB
 
 ## Project Description  
 This is a simple **Flutter** application designed to help students manage their college schedules, including assignments, quizzes, and exams. With this app, users can **add, edit, and delete** schedules easily.  
