@@ -1,26 +1,6 @@
-# Simple Application - Aplikasi Jadwal Kegiatan Kuliah
+# todo_list
 
-## Identity  
-- **Name:** Melanie Sayyidina Sabrina Refman  
-- **NRP:** 5025211029  
-- **Class:** PPB C  
-- **Course:** Mobile Programming (PPB)  
-
-## Project Description  
-This is a simple **Flutter** application designed to help students manage their college schedules, including assignments, quizzes, and exams. With this app, users can **add, edit, and delete** schedules easily.  
-
-## Main Features  
-✅ Add new schedule entries  
-✅ Edit existing schedules  
-✅ Delete schedules when no longer needed  
-
-## Technologies Used  
-- **Flutter** (Dart)  
-- **Material Design** for UI  
-
-## Application Demo  
-Watch the demo video here:  
-[![Demo Video](https://img.youtube.com/vi/l2O5WIg-vs4/0.jpg)](https://youtu.be/l2O5WIg-vs4)
+A new Flutter project.
 
 ## Getting Started
 

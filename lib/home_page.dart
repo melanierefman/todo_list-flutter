@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
 import 'add_schedule_page.dart';
 import 'schedule_item.dart';
+import 'package:objectbox/objectbox.dart';
+import 'objectbox_helper.dart';
 
+@Entity()
 class Schedule {
+  int id = 0;
+
   String subject;
   String type;
   String date;
   String time;
 
-  Schedule({required this.subject, required this.type, required this.date, required this.time});
+  Schedule({
+    this.id = 0,
+    required this.subject,
+    required this.type,
+    required this.date,
+    required this.time,
+  });
 }
 
 class HomePage extends StatefulWidget {
@@ -18,29 +29,43 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Schedule> schedules = [];
+  late ObjectBoxHelper objectBox;
 
-  void _navigateToForm({Schedule? schedule, int? index}) async {
+  @override
+  void initState() {
+    super.initState();
+    initObjectBox();
+  }
+
+  void initObjectBox() async {
+    objectBox = await ObjectBoxHelper.create();
+    setState(() {
+      schedules = objectBox.getAllSchedules();
+    });
+  }
+
+  void _navigateToForm({Schedule? schedule}) async {
     final result = await Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => AddEditSchedulePage(schedule: schedule),
-      ),
+      MaterialPageRoute(builder: (context) => AddEditSchedulePage(schedule: schedule)),
     );
 
     if (result != null && result is Schedule) {
       setState(() {
-        if (index != null) {
-          schedules[index] = result;
+        if (result.id == 0) {
+          objectBox.addSchedule(result);
         } else {
-          schedules.add(result);
+          objectBox.updateSchedule(result);
         }
+        schedules = objectBox.getAllSchedules();
       });
     }
   }
 
-  void _deleteSchedule(int index) {
+  void _deleteSchedule(Schedule schedule) {
     setState(() {
-      schedules.removeAt(index);
+      objectBox.deleteSchedule(schedule.id);
+      schedules = objectBox.getAllSchedules();
     });
   }
 
@@ -57,8 +82,8 @@ class _HomePageState extends State<HomePage> {
         itemBuilder: (context, index) {
           return ScheduleItem(
             schedule: schedules[index],
-            onEdit: () => _navigateToForm(schedule: schedules[index], index: index),
-            onDelete: () => _deleteSchedule(index),
+            onEdit: () => _navigateToForm(schedule: schedules[index]),
+            onDelete: () => _deleteSchedule(schedules[index]),
           );
         },
       ),
